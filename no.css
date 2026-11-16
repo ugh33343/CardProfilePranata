@@ -1,0 +1,560 @@
+:root {
+    --bg-body: #f0f2f5;
+    --bg-card: #ffffff;
+    --text-main: #333333;
+    --text-muted: #666666;
+    --primary: #007bff;
+    --primary-hover: #0056b3;
+    --badge-bg: #e7f1ff;
+    --badge-color: #007bff;
+    --border-color: #eeeeee;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --input-bg: #ffffff;
+}
+
+body.dark-mode {
+    --bg-body: #111827;
+    --bg-card: #1f2937;
+    --text-main: #f9fafb;
+    --text-muted: #9ca3af;
+    --primary: #3b82f6;
+    --primary-hover: #60a5fa;
+    --badge-bg: #1e3a8a;
+    --badge-color: #bfdbfe;
+    --border-color: #374151;
+    --card-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    --input-bg: #374151;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.namek {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--primary);
+    transition: color 0.3s ease;
+}
+
+section {
+    background-color: var(--bg-card);
+    width: 100%;
+    max-width: 400px;
+    padding: 25px 25px 30px;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    text-align: center;
+    position: relative;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    animation: melayang 0.8s ease-out forwards;
+}
+
+.bg-video {
+    width: 100%;
+    max-height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    display: none; /* Video default disembunyikan jika sumber video belum diisi */
+}
+
+/* Navigasi & Header */
+nav {
+    margin-bottom: 15px;
+}
+
+.nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.nav-header h2 {
+    font-size: 1.3rem;
+    color: var(--text-main);
+}
+
+.theme-toggle {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+    background-color: var(--badge-bg);
+    transform: scale(1.1);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    padding: 5px 12px;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+    background-color: var(--badge-bg);
+    text-decoration: none;
+}
+
+.nav-link.active {
+    background-color: var(--primary);
+    color: #ffffff;
+    font-weight: bold;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 15px 0 20px;
+}
+
+/* Konten Tab */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tab 1: Profile Card */
+.profile-card {
+    text-align: left;
+}
+
+.avatar-box {
+    text-align: center;
+}
+
+.foto {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 10px auto 15px;
+    border: 3px solid var(--primary);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.name {
+    font-size: 1.25rem;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.role {
+    font-size: 0.95rem;
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.bio {
+    font-size: 0.88rem;
+    line-height: 1.4;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.skills {
+    margin-bottom: 15px;
+}
+
+.badge-skill {
+    display: inline-block;
+    background-color: var(--badge-bg);
+    color: var(--badge-color);
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.78rem;
+    margin-right: 5px;
+    margin-top: 6px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.badge-skill:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Tombol Aksi */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-contact {
+    display: block;
+    flex: 2;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-contact:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-contact:active {
+    transform: scale(0.98);
+}
+
+.btn-like {
+    flex: 1;
+    background-color: var(--badge-bg);
+    color: var(--badge-color);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-like:hover {
+    transform: scale(1.04);
+}
+
+.btn-like.liked {
+    animation: bounce 0.4s ease;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Tab 2: Projects */
+.projects-container {
+    text-align: left;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.section-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.project-card {
+    background-color: var(--bg-body);
+    border: 1px solid var(--border-color);
+    padding: 12px 14px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.project-card h4 {
+    font-size: 0.92rem;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.project-card p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    line-height: 1.35;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+
+/* Tab 3: More / Kutipan */
+.more-container {
+    text-align: center;
+}
+
+.quote-card {
+    background-color: var(--badge-bg);
+    color: var(--badge-color);
+    padding: 14px;
+    border-radius: 8px;
+    margin: 12px 0 15px;
+    border-left: 4px solid var(--primary);
+    text-align: left;
+}
+
+.quote-card p {
+    font-size: 0.88rem;
+    line-height: 1.45;
+    font-style: italic;
+    margin-bottom: 6px;
+}
+
+.quote-author {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: right;
+    font-style: normal;
+}
+
+.btn-secondary {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--badge-bg);
+    color: var(--primary);
+}
+
+.social-links {
+    margin-top: 18px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 12px;
+}
+
+.social-links h4 {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.social-badges {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.social-btn {
+    text-decoration: none;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.social-btn:hover {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* Modal Popup */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 20px;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-box {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    width: 100%;
+    max-width: 360px;
+    padding: 24px;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    transform: scale(0.92);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.show .modal-box {
+    transform: scale(1);
+}
+
+.btn-close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: transparent;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    line-height: 1;
+}
+
+.btn-close:hover {
+    color: var(--text-main);
+}
+
+.modal-title {
+    font-size: 1.15rem;
+    margin-bottom: 4px;
+    color: var(--text-main);
+}
+
+.modal-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+}
+
+.form-group {
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: var(--text-main);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    background-color: var(--input-bg);
+    color: var(--text-main);
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+}
+
+/* Toast Notifikasi */
+.toast {
+    position: fixed;
+    bottom: 25px;
+    background-color: #10b981;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 25px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    font-size: 0.85rem;
+    font-weight: bold;
+    z-index: 1100;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    text-align: center;
+    max-width: 90vw;
+}
+
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+@keyframes melayang {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

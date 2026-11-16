@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="no.css">
+    <script src="no.js" defer></script>
+    <title>Portfolio - Pranata</title>
+</head>
+
+<body>
+    <main>
+        <h2 class="namek" id="sapa">Halo!</h2>
+        <section>
+           
+            <video autoplay muted loop playsinline class="bg-video">
+                <source src="nama-video.mp4" type="video/mp4">
+                Browser Anda tidak mendukung tag video.
+            </video>
+
+            <nav class="navbar">
+                <div class="nav-header">
+                    <h2>welcome.</h2>
+                    <!-- Tombol Dark Mode Switcher -->
+                    <button id="theme-toggle" class="theme-toggle" title="Ganti Tema">🌙</button>
+                </div>
+                <div class="nav-links">
+                    <a href="#about" class="nav-link active" data-tab="tab-about">about</a>
+                    <a href="#project" class="nav-link" data-tab="tab-project">project</a>
+                    <a href="#more" class="nav-link" data-tab="tab-more">more</a>
+                </div>
+            </nav>
+
+            <hr>
+
+            <!-- TAB 1: ABOUT -->
+            <div id="tab-about" class="tab-content active">
+                <div class="profile-card">
+                    <div class="avatar-box">
+                        <img class="foto" src="kucingimoed.jpg" alt="Foto Profil Pranata">
+                    </div>
+                    <h2 class="name">My name is Pranata</h2>
+                    <p class="role">Siswa Web Developer</p>
+                    <p class="bio">Sedang belajar materi dasar CSS & JavaScript untuk membangun antarmuka web modern.</p>
+                    
+                    <div class="skills">
+                        <span class="badge-skill" data-skill="HTML5">HTML5</span>
+                        <span class="badge-skill" data-skill="CSS3">CSS3</span>
+                        <span class="badge-skill" data-skill="Flexbox">Flexbox</span>
+                        <span class="badge-skill" data-skill="JavaScript">JavaScript</span>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button id="btn-contact" class="btn-contact">Hubungi Saya</button>
+                        <button id="btn-like" class="btn-like" title="Beri Apresiasi">
+                            ❤️ <span id="like-count">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: PROJECT -->
+            <div id="tab-project" class="tab-content">
+                <div class="projects-container">
+                    <h3 class="section-title">Proyek Saya</h3>
+                    <p class="section-desc">Beberapa proyek latihan web development yang sedang saya kembangkan:</p>
+
+                    <div class="project-card">
+                        <h4>🌐 Web Portfolio Interaktif</h4>
+                        <p>Halaman profil interaktif dengan tab, dark mode, dan popup kontak berbasis JavaScript.</p>
+                        <div class="project-tags">
+                            <span class="badge-skill">HTML5</span>
+                            <span class="badge-skill">CSS3</span>
+                            <span class="badge-skill">JavaScript</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h4>🧮 Kalkulator Sederhana</h4>
+                        <p>Aplikasi kalkulator aritmatika dengan operasi dasar dan event handling JavaScript.</p>
+                        <div class="project-tags">
+                            <span class="badge-skill">HTML</span>
+                            <span class="badge-skill">JavaScript</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <h4>📝 To-Do List Interaktif</h4>
+                        <p>Aplikasi catatan tugas harian dengan fitur tambah, centang selesai, dan simpan data.</p>
+                        <div class="project-tags">
+                            <span class="badge-skill">DOM</span>
+                            <span class="badge-skill">LocalStorage</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: MORE -->
+            <div id="tab-more" class="tab-content">
+                <div class="more-container">
+                    <h3 class="section-title">Kutipan Inspirasi Harian</h3>
+                    <div class="quote-card">
+                        <p id="quote-text">"Koding bukan tentang mengetik cepat, tapi tentang memecahkan masalah langkah demi langkah."</p>
+                        <span id="quote-author" class="quote-author">- Pranata</span>
+                    </div>
+                    <button id="btn-new-quote" class="btn-secondary">Ganti Kutipan 🔄</button>
+
+                    <div class="social-links">
+                        <h4>Temukan Saya di:</h4>
+                        <div class="social-badges">
+                            <a href="#" class="social-btn">GitHub</a>
+                            <a href="#" class="social-btn">Instagram</a>
+                            <a href="#" class="social-btn">LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- MODAL POPUP HUBUNGI SAYA -->
+    <div id="contact-modal" class="modal-overlay">
+        <div class="modal-box">
+            <button id="btn-close-modal" class="btn-close" aria-label="Tutup">&times;</button>
+            <h3 class="modal-title">Hubungi Saya</h3>
+            <p class="modal-desc">Kirimkan pesan atau sapaan untuk Pranata!</p>
+            
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="contact-name">Nama Anda:</label>
+                    <input type="text" id="contact-name" placeholder="Masukkan nama Anda..." required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-message">Pesan:</label>
+                    <textarea id="contact-message" rows="3" placeholder="Tuliskan pesan Anda di sini..." required></textarea>
+                </div>
+                <button type="submit" class="btn-contact">Kirim Pesan 🚀</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFIKASI -->
+    <div id="toast" class="toast">Pesan berhasil dikirim!</div>
+
+    <footer>
+        @pranata copyright of wtv
+    </footer>
+</body>
+
+</html>
